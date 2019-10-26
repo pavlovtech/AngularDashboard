@@ -8,11 +8,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { DynamicComponentDirective } from './dashboard/directives/dynamic-component.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    DynamicComponentDirective
   ],
   imports: [
     BrowserModule,
