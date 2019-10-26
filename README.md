@@ -26,7 +26,7 @@
 
     <gridster [options]="options">
         <gridster-item [item]="item" *ngFor="let item of items">
-            <p>Test widget</p>
+           <p>Test widget</p>
         </gridster-item>
     </gridster>
 
