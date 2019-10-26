@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.options = {
-      gridType: GridType.Fit,
+      gridType: GridType.Fixed,
       compactType: CompactType.None,
       pushItems: true,
       draggable: {
