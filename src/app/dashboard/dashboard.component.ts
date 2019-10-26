@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GridsterConfig, GridsterItem, GridType, CompactType } from 'angular-gridster2';
+import { DashboardCard } from './models/dashboard-card';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,9 +11,7 @@ export class DashboardComponent implements OnInit {
   constructor() { }
 
   options: GridsterConfig;
-  items: Array<GridsterItem>;
-
-
+  items: DashboardCard[];
 
   ngOnInit() {
     this.options = {
@@ -28,8 +27,7 @@ export class DashboardComponent implements OnInit {
     };
 
     this.items = [
-      { cols: 2, rows: 1, y: 0, x: 0 },
-      { cols: 2, rows: 1, y: 0, x: 2 }
+      new DashboardCard({ component: null, y: 0, x: 0, cols: 2, rows: 1 })
     ];
   }
 
@@ -37,11 +35,7 @@ export class DashboardComponent implements OnInit {
     this.options.api.optionsChanged();
   }
 
-  removeItem(item: GridsterItem) {
-    this.items.splice(this.items.indexOf(item), 1);
-  }
-
   addItem() {
-    this.items.push({} as GridsterItem);
+    this.items.push({} as DashboardCard);
   }
 }

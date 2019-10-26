@@ -38,7 +38,30 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 "styles": [
   "node_modules/bootstrap/scss/bootstrap.scss",
   /* ... */
-],
+]
 
 5. ng add @angular/material
 6. npm i angular-highcharts highcharts
+
+# Adding Gridster
+1. Create a dashboard component
+
+`ng g component dashboard`
+
+2. Add the gridster component
+
+<gridster [options]="options">
+    <gridster-item [item]="item" *ngFor="let item of items">
+        <p>Test widget</p>
+    </gridster-item>
+</gridster>
+
+3. Add a toolbar
+
+<mat-toolbar>
+    <button mat-mini-fab (click)="addItem()" class="add-button cols-2">
+        <mat-icon>add</mat-icon>
+    </button>
+</mat-toolbar>
+
+4. npm install uuid
