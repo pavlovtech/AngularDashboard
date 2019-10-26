@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GridsterConfig, GridsterItem, GridType, CompactType } from 'angular-gridster2';
 import { DashboardCard } from './models/dashboard-card';
+import { ChartWidgetComponent } from './widgets/chart-widget/chart-widget.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,7 +16,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.options = {
-      gridType: GridType.Fixed,
+      gridType: GridType.Fit,
       compactType: CompactType.None,
       pushItems: true,
       draggable: {
@@ -27,7 +28,7 @@ export class DashboardComponent implements OnInit {
     };
 
     this.items = [
-      new DashboardCard({ component: null, y: 0, x: 0, cols: 2, rows: 1 })
+      new DashboardCard({ component: ChartWidgetComponent, y: 0, x: 0, cols: 2, rows: 2 })
     ];
   }
 
