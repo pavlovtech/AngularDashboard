@@ -3,7 +3,7 @@ import { DashboardCard } from '../../models/dashboard-card';
 import * as Highcharts from 'highcharts';
 import { CardResizeService } from '../../services/card-resize.service';
 import { from, of } from 'rxjs';
-import { delay } from 'rxjs/internal/operators';
+import { delay, filter } from 'rxjs/internal/operators';
 import { concatMap } from 'rxjs/internal/operators';
 
 @Component({
@@ -16,12 +16,9 @@ export class ChartWidgetComponent {
   constructor(public resizeService: CardResizeService) {
     resizeService.dashboardCardResize$
       .pipe(
-        concatMap(item => of(item).pipe(delay(100)))
-      ).subscribe(card => {
-        if (card.cardId === this.card.cardId) {
-          this.resize();
-        }
-      });
+        filter(card => card.cardId === this.card.cardId),
+        concatMap(item => of(item).pipe(delay(300)))
+      ).subscribe(() => this.resize());
   }
 
   Highcharts: typeof Highcharts = Highcharts;
