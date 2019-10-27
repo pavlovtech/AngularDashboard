@@ -2,7 +2,9 @@ import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { DashboardCard } from '../../models/dashboard-card';
 import * as Highcharts from 'highcharts';
 import { CardResizeService } from '../../services/card-resize.service';
+import { from, of } from 'rxjs';
 import { delay } from 'rxjs/internal/operators';
+import { concatMap } from 'rxjs/internal/operators';
 
 @Component({
   selector: 'app-chart-widget',
@@ -12,8 +14,10 @@ import { delay } from 'rxjs/internal/operators';
 export class ChartWidgetComponent {
 
   constructor(public resizeService: CardResizeService) {
-    resizeService.dashboardCardResize$.pipe(delay(100))
-      .subscribe(card => {
+    resizeService.dashboardCardResize$
+      .pipe(
+        concatMap(item => of(item).pipe(delay(100)))
+      ).subscribe(card => {
         if (card.cardId === this.card.cardId) {
           this.resize();
         }
@@ -63,6 +67,5 @@ export class ChartWidgetComponent {
 
   onChartInstanceReceived(chart: Highcharts.Chart) {
     this.chart = chart;
-    //this.chart.reflow();
   }
 }
