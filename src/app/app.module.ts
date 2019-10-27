@@ -10,7 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { DynamicComponentDirective } from './dashboard/directives/dynamic-component.directive';
 import { ChartWidgetComponent } from './dashboard/widgets/chart-widget/chart-widget.component';
-import { ChartModule } from 'angular-highcharts';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { CardResizeService } from './dashboard/services/card-resize.service';
 
 @NgModule({
   declarations: [
@@ -22,13 +23,16 @@ import { ChartModule } from 'angular-highcharts';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    ChartModule,
+    HighchartsChartModule,
     GridsterModule,
     MatButtonModule,
     MatIconModule,
     MatToolbarModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [CardResizeService],
+  bootstrap: [AppComponent],
+  entryComponents: [
+    ChartWidgetComponent
+  ]
 })
 export class AppModule { }

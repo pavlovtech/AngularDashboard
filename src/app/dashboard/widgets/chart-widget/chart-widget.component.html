@@ -1,1 +1,6 @@
-<div [chart]="chart" class="chart-container" (window:resize)="onResize()"></div>
+<highcharts-chart class="chart-container"
+  (chartInstance)="onChartInstanceReceived($event)"
+  [Highcharts]="Highcharts"
+  [options]="chartOptions"
+  (window:resize)="resize()">
+</highcharts-chart>

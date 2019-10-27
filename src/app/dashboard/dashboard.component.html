@@ -6,6 +6,6 @@
 
 <gridster [options]="options">
     <gridster-item [item]="item" *ngFor="let item of items">
-        <app-chart-widget></app-chart-widget>
+        <ng-container appDynamicComponent [component]="item.component" [inputs]="{card: item}"></ng-container>
     </gridster-item>
 </gridster>

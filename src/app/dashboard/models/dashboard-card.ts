@@ -5,6 +5,7 @@ export class DashboardCard {
     cardId?: string;
     component?: any;
     componentName?: string;
+    componentInstance?: any;
     x?: number;
     y?: number;
     rows?: number;
