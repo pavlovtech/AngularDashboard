@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { GridsterConfig, GridsterItem, GridType, CompactType, GridsterComponentInterface, GridsterItemComponent } from 'angular-gridster2';
+import { GridsterConfig, GridType, CompactType, DisplayGrid } from 'angular-gridster2';
 import { DashboardCard } from './models/dashboard-card';
 import { ChartWidgetComponent } from './widgets/chart-widget/chart-widget.component';
-import { CardResizeService } from './services/card-resize.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,53 +10,31 @@ import { CardResizeService } from './services/card-resize.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(public resizeService: CardResizeService) {
+  constructor() {
   }
 
   options: GridsterConfig;
 
-  items: DashboardCard[];
-
-  static updateSize() {
-    window.dispatchEvent(new Event('resize'));
-  }
-
-  static gridSizeChanged(gridster: GridsterComponentInterface) {
-    console.log('gridSizeChanged', gridster);
-    //DashboardComponent.updateSize();
-  }
+  items: DashboardCard[] = [];
 
   ngOnInit() {
-    this.items = [
-      new DashboardCard({ component: ChartWidgetComponent, y: 0, x: 0, cols: 2, rows: 2 })
-    ];
-
     this.options = {
-      gridType: GridType.Fit,
+      gridType: GridType.VerticalFixed,
+      fixedRowHeight: 50,
       compactType: CompactType.None,
+      minCols: 10,
+      maxCols: 10,
+      minRows: 12,
+      maxRows: 50,
+      displayGrid: DisplayGrid.Always,
       pushItems: true,
       draggable: {
-        enabled: true
+          enabled: true
       },
       resizable: {
-        enabled: true
-      },
-      itemChangeCallback: this.itemChange,
-      itemResizeCallback: this.itemResize,
-      gridSizeChangedCallback: DashboardComponent.gridSizeChanged
+          enabled: true
+      }
     };
-  }
-
-  itemChange = (item: DashboardCard, itemComponent: GridsterItemComponent) =>  {
-    //console.log('itemChanged', item, itemComponent);
-    this.resizeService.resize(item);
-    //DashboardComponent.updateSize();
-  }
-
-  itemResize = (item: DashboardCard, itemComponent: GridsterItemComponent) => {
-    //console.log('itemResize', item, itemComponent);
-    this.resizeService.resize(item);
-    //DashboardComponent.updateSize();
   }
 
   changedOptions() {
@@ -65,6 +42,16 @@ export class DashboardComponent implements OnInit {
   }
 
   addItem() {
-    this.items.push(new DashboardCard({ component: ChartWidgetComponent, y: 0, x: 0, cols: 2, rows: 2 }));
+    this.items.push(new DashboardCard({
+      component: ChartWidgetComponent,
+      y: 0,
+      x: 0,
+      rows: 4,
+      cols: 4,
+      minItemRows: 3,
+      maxItemRows: 10,
+      minItemCols: 3,
+      maxItemCols: 10
+    }));
   }
 }

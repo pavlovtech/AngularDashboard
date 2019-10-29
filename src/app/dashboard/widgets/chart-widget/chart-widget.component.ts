@@ -1,25 +1,13 @@
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, ViewChild, DoCheck } from '@angular/core';
 import { DashboardCard } from '../../models/dashboard-card';
 import * as Highcharts from 'highcharts';
-import { CardResizeService } from '../../services/card-resize.service';
-import { from, of } from 'rxjs';
-import { delay, filter } from 'rxjs/internal/operators';
-import { concatMap } from 'rxjs/internal/operators';
 
 @Component({
   selector: 'app-chart-widget',
   templateUrl: './chart-widget.component.html',
   styleUrls: ['./chart-widget.component.scss']
 })
-export class ChartWidgetComponent {
-
-  constructor(public resizeService: CardResizeService) {
-    resizeService.dashboardCardResize$
-      .pipe(
-        filter(card => card.cardId === this.card.cardId),
-        concatMap(item => of(item).pipe(delay(300)))
-      ).subscribe(() => this.resize());
-  }
+export class ChartWidgetComponent implements DoCheck {
 
   Highcharts: typeof Highcharts = Highcharts;
   chartOptions: Highcharts.Options = {
@@ -53,8 +41,11 @@ export class ChartWidgetComponent {
   };
 
   chart: Highcharts.Chart;
-
   card: DashboardCard;
+
+  ngDoCheck() {
+    this.resize();
+  }
 
   resize() {
     if (this.chart) {

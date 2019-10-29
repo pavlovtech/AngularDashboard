@@ -21,7 +21,7 @@ export class DashboardCard implements GridsterItem {
   maxItemArea?: number;
 
   constructor(card: DashboardCard) {
-      this.componentName = this.component.name;
+      this.componentName = card.component.name;
 
       if (!this.cardId) {
         this.cardId = uuid();
