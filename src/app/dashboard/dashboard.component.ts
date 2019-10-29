@@ -13,6 +13,14 @@ export class DashboardComponent implements OnInit {
   constructor() {
   }
 
+  widgetEvents = {
+    widgetRemoved: (cardId: string) => {
+      const card = this.items.find(c => c.cardId === cardId);
+      const cardIndex = this.items.indexOf(card);
+      this.items.splice(cardIndex, 1);
+    },
+};
+
   options: GridsterConfig;
 
   items: DashboardCard[] = [];
@@ -53,5 +61,9 @@ export class DashboardComponent implements OnInit {
       minItemCols: 3,
       maxItemCols: 10
     }));
+  }
+
+  cleanDashboard() {
+    this.items = [];
   }
 }

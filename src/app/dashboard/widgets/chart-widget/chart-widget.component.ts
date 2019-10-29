@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, DoCheck } from '@angular/core';
+import { Component, ElementRef, ViewChild, DoCheck, Output, EventEmitter } from '@angular/core';
 import { DashboardCard } from '../../models/dashboard-card';
 import * as Highcharts from 'highcharts';
 
@@ -8,6 +8,9 @@ import * as Highcharts from 'highcharts';
   styleUrls: ['./chart-widget.component.scss']
 })
 export class ChartWidgetComponent implements DoCheck {
+
+  @Output()
+  widgetRemoved = new EventEmitter<string>();
 
   Highcharts: typeof Highcharts = Highcharts;
   chartOptions: Highcharts.Options = {
@@ -42,6 +45,11 @@ export class ChartWidgetComponent implements DoCheck {
 
   chart: Highcharts.Chart;
   card: DashboardCard;
+
+
+  onWidgetRemoved() {
+    this.widgetRemoved.emit(this.card.cardId);
+  }
 
   ngDoCheck() {
     this.resize();
