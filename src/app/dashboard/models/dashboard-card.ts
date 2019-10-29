@@ -6,10 +6,10 @@ export class DashboardCard implements GridsterItem {
   component?: any;
   componentName?: string;
   componentInstance?: any;
-  x?: number;
-  y?: number;
-  rows?: number;
-  cols?: number;
+  x: number;
+  y: number;
+  rows: number;
+  cols: number;
   dragEnabled?: boolean;
   resizeEnabled?: boolean;
   compactEnabled?: boolean;
