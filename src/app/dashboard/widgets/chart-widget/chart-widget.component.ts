@@ -10,7 +10,7 @@ import * as Highcharts from 'highcharts';
 export class ChartWidgetComponent implements DoCheck {
 
   @Output()
-  widgetRemoved = new EventEmitter<string>();
+  widgetRemoved = new EventEmitter<DashboardCard>();
 
   Highcharts: typeof Highcharts = Highcharts;
   chartOptions: Highcharts.Options = {
@@ -48,7 +48,7 @@ export class ChartWidgetComponent implements DoCheck {
 
 
   onWidgetRemoved() {
-    this.widgetRemoved.emit(this.card.cardId);
+    this.widgetRemoved.emit(this.card);
   }
 
   ngDoCheck() {

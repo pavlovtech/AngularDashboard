@@ -14,10 +14,8 @@ export class DashboardComponent implements OnInit {
   }
 
   widgetEvents = {
-    widgetRemoved: (cardId: string) => {
-      const card = this.items.find(c => c.cardId === cardId);
-      const cardIndex = this.items.indexOf(card);
-      this.items.splice(cardIndex, 1);
+    widgetRemoved: (card: DashboardCard) => {
+      this.items = this.items.filter(item => item !== card);
     },
 };
 
