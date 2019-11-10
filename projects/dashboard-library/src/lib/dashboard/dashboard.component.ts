@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { GridsterConfig, GridType, CompactType, DisplayGrid } from 'angular-gridster2';
-import { DashboardCard } from './models/dashboard-card';
+import { DashboardCard } from './models/dashboard-card.model';
 import { ChartWidgetComponent } from './widgets/chart-widget/chart-widget.component';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'lib-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })

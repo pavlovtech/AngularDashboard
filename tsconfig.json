@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "dashboard-library": [
+        "dist/dashboard-library"
+      ],
+      "dashboard-library/*": [
+        "dist/dashboard-library/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

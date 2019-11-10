@@ -1,0 +1,21 @@
+<mat-toolbar>
+    <mat-tab-group>
+        <mat-tab label="First">
+        </mat-tab>
+        <mat-tab label="Second">
+        </mat-tab>
+    </mat-tab-group>
+    <span class="fill-remaining-space"></span>
+    <button mat-mini-fab (click)="addItem()" class="toolbar-button">
+        <mat-icon>add</mat-icon>
+    </button>
+    <button mat-mini-fab (click)="cleanDashboard()" class="toolbar-button">
+        <mat-icon>delete_sweep</mat-icon>
+    </button>
+</mat-toolbar>
+
+<gridster [options]="options">
+    <gridster-item [item]="item" *ngFor="let item of items">
+        <ng-container libDynamicComponent [component]="item.component" [inputs]="{card: item}" [outputs]="widgetEvents"></ng-container>
+    </gridster-item>
+</gridster>

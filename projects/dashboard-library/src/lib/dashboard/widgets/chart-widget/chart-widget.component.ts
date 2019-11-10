@@ -1,9 +1,9 @@
-import { Component, ElementRef, ViewChild, DoCheck, Output, EventEmitter } from '@angular/core';
-import { DashboardCard } from '../../models/dashboard-card';
+import { Component, DoCheck, Output, EventEmitter } from '@angular/core';
+import { DashboardCard } from '../../models/dashboard-card.model';
 import * as Highcharts from 'highcharts';
 
 @Component({
-  selector: 'app-chart-widget',
+  selector: 'lib-chart-widget',
   templateUrl: './chart-widget.component.html',
   styleUrls: ['./chart-widget.component.scss']
 })

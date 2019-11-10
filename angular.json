@@ -29,7 +29,6 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
-              "node_modules/bootstrap/scss/bootstrap.scss",
               "src/styles.scss"
             ],
             "scripts": []
@@ -124,6 +123,41 @@
             "production": {
               "devServerTarget": "Dashboard:serve:production"
             }
+          }
+        }
+      }
+    },
+    "dashboard-library": {
+      "projectType": "library",
+      "root": "projects/dashboard-library",
+      "sourceRoot": "projects/dashboard-library/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/dashboard-library/tsconfig.lib.json",
+            "project": "projects/dashboard-library/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dashboard-library/src/test.ts",
+            "tsConfig": "projects/dashboard-library/tsconfig.spec.json",
+            "karmaConfig": "projects/dashboard-library/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/dashboard-library/tsconfig.lib.json",
+              "projects/dashboard-library/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }

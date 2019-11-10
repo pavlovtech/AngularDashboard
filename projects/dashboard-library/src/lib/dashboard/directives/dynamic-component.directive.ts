@@ -1,7 +1,7 @@
 import { Directive, ViewContainerRef, Input, ComponentFactoryResolver, OnInit, EventEmitter, ComponentRef } from '@angular/core';
 
 @Directive({
-  selector: '[appDynamicComponent]',
+  selector: '[libDynamicComponent]',
 })
 export class DynamicComponentDirective implements OnInit {
   @Input()

@@ -1,5 +1,5 @@
 import { GridsterItem } from 'angular-gridster2';
-import * as uuid from 'uuid/v1';
+import { v1 as uuid } from 'uuid';
 
 export class DashboardCard implements GridsterItem {
   cardId?: string;
