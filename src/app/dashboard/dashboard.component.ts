@@ -15,9 +15,12 @@ export class DashboardComponent implements OnInit {
 
   widgetEvents = {
     widgetRemoved: (card: DashboardCard) => {
-      this.items = this.items.filter(item => item !== card);
+      const index = this.items.indexOf(card);
+      if (index >= 0) {
+        this.items.splice(index, 1);
+      }
     },
-};
+  };
 
   options: GridsterConfig;
 
