@@ -1,9 +1,12 @@
-import { Directive, ViewContainerRef, Input, ComponentFactoryResolver, OnInit, EventEmitter, ComponentRef } from '@angular/core';
+import { Directive, ViewContainerRef, Input, ComponentFactoryResolver, OnInit, EventEmitter, ComponentRef, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs/internal/Subscription';
 
 @Directive({
   selector: '[libDynamicComponent]',
 })
-export class DynamicComponentDirective implements OnInit {
+export class DynamicComponentDirective implements OnInit, OnDestroy {
+
+  constructor(public viewContainerRef: ViewContainerRef, private resolver: ComponentFactoryResolver) { }
   @Input()
   component: any;
 
@@ -13,7 +16,11 @@ export class DynamicComponentDirective implements OnInit {
   @Input()
   outputs: { [name: string]: any; }[] = [];
 
-  constructor(public viewContainerRef: ViewContainerRef, private resolver: ComponentFactoryResolver) { }
+  subscrbtions: Subscription[] = [];
+
+  ngOnDestroy(): void {
+    this.subscrbtions.forEach(s => s.unsubscribe());
+  }
 
   ngOnInit() {
     const componentFactory = this.resolver.resolveComponentFactory<any>(this.component);
@@ -29,7 +36,9 @@ export class DynamicComponentDirective implements OnInit {
     for (const [eventName, eventHandler] of Object.entries(this.outputs)) {
       if (eventName in componentRef.instance) {
         const eventEmitter: EventEmitter<any> = componentRef.instance[eventName];
-        eventEmitter.subscribe(eventHandler);
+        const subscrbtion = eventEmitter.subscribe(eventHandler);
+
+        this.subscrbtions.push(subscrbtion);
       }
     }
   }

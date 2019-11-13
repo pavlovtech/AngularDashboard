@@ -2,10 +2,12 @@ import { GridsterItem } from 'angular-gridster2';
 import { v1 as uuid } from 'uuid';
 
 export class DashboardCard implements GridsterItem {
+
+  widgetTitle: string;
+
   cardId?: string;
-  component?: any;
+  component: any;
   componentName?: string;
-  componentInstance?: any;
   x: number;
   y: number;
   rows: number;
@@ -21,8 +23,6 @@ export class DashboardCard implements GridsterItem {
   maxItemArea?: number;
 
   constructor(card: DashboardCard) {
-      this.componentName = card.component.name;
-
       if (!this.cardId) {
         this.cardId = uuid();
       }
