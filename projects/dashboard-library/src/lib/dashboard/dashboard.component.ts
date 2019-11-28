@@ -54,7 +54,7 @@ export class DashboardComponent implements OnInit {
     this.items.push(new DashboardCard({
       widgetTitle: 'Chart example',
       component: ChartWidgetComponent,
-      componentName: 'ChartWidgetComponent'
+      componentName: 'ChartWidgetComponent',
       y: 0,
       x: 0,
       rows: 4,
