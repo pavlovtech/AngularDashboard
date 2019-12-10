@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng build dashboard-library && ng serve",
-    "build-dashboard-lib": "ng build dashboard-library --watch",
+    "dashboard": "ng build dashboard-library --watch",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

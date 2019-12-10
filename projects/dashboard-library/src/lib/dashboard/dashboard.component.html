@@ -15,7 +15,7 @@
 </mat-toolbar>
 
 <gridster [options]="options">
-    <gridster-item [item]="item" *ngFor="let item of items">
+    <gridster-item [item]="item.placement" *ngFor="let item of items">
         <ng-container libDynamicComponent [component]="item.component" [inputs]="{card: item}" [outputs]="widgetEvents"></ng-container>
     </gridster-item>
 </gridster>

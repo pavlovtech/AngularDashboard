@@ -55,14 +55,16 @@ export class DashboardComponent implements OnInit {
       widgetTitle: 'Chart example',
       component: ChartWidgetComponent,
       componentName: 'ChartWidgetComponent',
-      y: 0,
-      x: 0,
-      rows: 4,
-      cols: 4,
-      minItemRows: 3,
-      maxItemRows: 10,
-      minItemCols: 3,
-      maxItemCols: 10
+      placement: {
+        y: 0,
+        x: 0,
+        rows: 4,
+        cols: 4,
+        minItemRows: 3,
+        maxItemRows: 10,
+        minItemCols: 3,
+        maxItemCols: 10
+      }
     }));
   }
 
