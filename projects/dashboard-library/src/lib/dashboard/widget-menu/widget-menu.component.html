@@ -1,0 +1,11 @@
+<mat-icon class="remove-btn" (click)="onCloseIconClicked()">clear</mat-icon>
+<h6>Add widgets</h6>
+<hr class="mt-0">
+
+<mat-list>
+    <ng-container *ngFor="let widgetType of widgetTypes">
+        <!-- <lib-widget-type [widgetTypeData]="widgetType"
+            (widgetTypeDragstart)="onDragstart(widgetType)"
+            (widgetTypeClicked)="onWidgetTypeClicked($event)"></lib-widget-type> -->
+    </ng-container>
+</mat-list>

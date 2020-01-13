@@ -9,21 +9,27 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatListModule } from '@angular/material/list';
+import { WidgetMenuComponent } from './widget-menu/widget-menu.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     DynamicComponentDirective,
-    ChartWidgetComponent
+    ChartWidgetComponent,
+    WidgetMenuComponent
   ],
   imports: [
     CommonModule,
     HighchartsChartModule,
     GridsterModule,
+    MatListModule,
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSidenavModule
   ],
   exports: [DashboardComponent],
   entryComponents: [

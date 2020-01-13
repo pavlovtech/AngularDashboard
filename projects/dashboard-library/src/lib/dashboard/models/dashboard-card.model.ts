@@ -1,13 +1,14 @@
 import { GridsterItem } from 'angular-gridster2';
 import { v1 as uuid } from 'uuid';
+import { WidgetSettings } from './widget-settings.model';
 
 export class DashboardCard {
-
-  widgetTitle: string;
 
   cardId?: string;
   component: any;
   componentName?: string;
+
+  widgetSettings: WidgetSettings;
 
   placement: GridsterItem;
 
