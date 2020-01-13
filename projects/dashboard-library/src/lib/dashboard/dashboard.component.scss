@@ -1,11 +1,11 @@
 .toolbar-button {
-    margin-right: 15px;
+  margin-right: 15px;
 }
 
 .fill-remaining-space {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 :host ::ng-deep .gridster-preview {
-    display: none !important;
+  display: none !important;
 }

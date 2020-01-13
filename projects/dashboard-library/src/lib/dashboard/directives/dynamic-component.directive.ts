@@ -1,5 +1,4 @@
-import { Directive, ViewContainerRef, Input, ComponentFactoryResolver, OnInit, EventEmitter, ComponentRef, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs/internal/Subscription';
+import { Directive, ViewContainerRef, Input, ComponentFactoryResolver, OnInit, EventEmitter, ComponentRef } from '@angular/core';
 
 @Directive({
   selector: '[libDynamicComponent]',
@@ -7,6 +6,7 @@ import { Subscription } from 'rxjs/internal/Subscription';
 export class DynamicComponentDirective implements OnInit {
 
   constructor(public viewContainerRef: ViewContainerRef, private resolver: ComponentFactoryResolver) { }
+
   @Input()
   component: any;
 

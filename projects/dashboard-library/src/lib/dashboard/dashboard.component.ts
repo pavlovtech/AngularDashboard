@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
       if (index >= 0) {
         this.items.splice(index, 1);
       }
-    },
+    }
   };
 
   options: GridsterConfig;
