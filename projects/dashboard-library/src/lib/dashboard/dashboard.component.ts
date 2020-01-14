@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { GridsterConfig, GridType, CompactType, DisplayGrid } from 'angular-gridster2';
 import { DashboardCard } from './models/dashboard-card.model';
 import { ChartWidgetComponent } from './widgets/chart-widget/chart-widget.component';
@@ -10,6 +10,28 @@ import { WidgetType } from './models/widget-type.model';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+
+  @Input()
+  widgetTypes: WidgetType[] = [{
+    componentName: 'ChartWidgetComponent',
+    component: ChartWidgetComponent,
+    widgetSettings: {
+        widgetTitle: 'Chart'
+    },
+    description: 'Description',
+    module: 'SOC',
+    thumbnailUrl: 'assets/images/widget-thumbnails/chart.png',
+    placement: {
+        x: 0,
+        y: 0,
+        rows: 5,
+        cols: 2,
+        minItemRows: 2,
+        maxItemRows: 10,
+        minItemCols: 2,
+        maxItemCols: 3
+    }
+  }];
 
   widgetMenuOpened = false;
 
@@ -103,8 +125,6 @@ export class DashboardComponent implements OnInit {
 
     return card;
   }
-
-  widgetTypes: WidgetType[] = [];
 
   private currentDraggableWidgetType: WidgetType;
 
