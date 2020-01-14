@@ -1,10 +1,12 @@
-.remove-btn {
-  position: absolute;
-  margin: 6px;
-  right: 0;
-  z-index: 1;
+.close-btn {
   cursor: pointer;
   font-size: 16px;
   height: 18px;
   width: 18px;
+  float: right;
+}
+
+.panel-header {
+  text-transform: uppercase;
+  font-weight: bold;
 }

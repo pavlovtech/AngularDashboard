@@ -10,6 +10,11 @@
   display: none !important;
 }
 
+:host ::ng-deep gridster {
+    height: calc(100vh - 65px);
+    width: 100% !important;
+}
+
 .overlay {
     position: absolute;
     top: 0;
