@@ -12,13 +12,15 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
 import { WidgetMenuComponent } from './widget-menu/widget-menu.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { WidgetTypeComponent } from './widget-type/widget-type.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     DynamicComponentDirective,
     ChartWidgetComponent,
-    WidgetMenuComponent
+    WidgetMenuComponent,
+    WidgetTypeComponent
   ],
   imports: [
     CommonModule,

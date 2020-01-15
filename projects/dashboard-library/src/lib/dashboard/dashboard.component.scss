@@ -15,6 +15,10 @@
     width: 100% !important;
 }
 
+:host ::ng-deep .mat-drawer-backdrop {
+  z-index: unset !important;
+}
+
 .overlay {
     position: absolute;
     top: 0;
@@ -27,8 +31,6 @@
 
 .widgets-panel {
     padding: 15px;
-    height: 100%;
     width: 320px;
     border-right: blue($color: #000000);
-    background-color: gray;
 }

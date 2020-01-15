@@ -16,11 +16,11 @@ export class DashboardComponent implements OnInit {
     componentName: 'ChartWidgetComponent',
     component: ChartWidgetComponent,
     widgetSettings: {
-        widgetTitle: 'Chart'
+        widgetTitle: 'Area Chart'
     },
-    description: 'Description',
+    description: 'Chart example for the demo.',
     module: 'SOC',
-    thumbnailUrl: 'assets/images/widget-thumbnails/chart.png',
+    thumbnailUrl: 'assets/images/widget-thumbnails/area.png',
     placement: {
         x: 0,
         y: 0,

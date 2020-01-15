@@ -4,8 +4,8 @@
 
 <mat-list>
     <ng-container *ngFor="let widgetType of widgetTypes">
-        <!-- <lib-widget-type [widgetTypeData]="widgetType"
+        <lib-widget-type [widgetType]="widgetType"
             (widgetTypeDragstart)="onDragstart(widgetType)"
-            (widgetTypeClicked)="onWidgetTypeClicked($event)"></lib-widget-type> -->
+            (widgetTypeClicked)="onWidgetTypeClicked($event)"></lib-widget-type>
     </ng-container>
 </mat-list>

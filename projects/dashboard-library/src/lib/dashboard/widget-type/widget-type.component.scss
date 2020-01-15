@@ -1,0 +1,29 @@
+.title {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.description {
+    text-align: justify;
+    margin-right: 10px;
+}
+
+.thumbnail {
+    height: 100px;
+    width: 100px;
+    border: grey;
+    margin-right: 10px;
+    margin-left: 10px;
+    float: left;
+}
+
+.widget {
+    overflow: auto;
+    border: grey;
+    cursor: pointer;
+    background: #6E6E6E;
+    padding-bottom: 10px;;
+    margin-top: 10px;
+}
+
+.widget:hover { background: #7A7A7A !important; }

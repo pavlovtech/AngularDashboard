@@ -14,6 +14,12 @@ export class WidgetMenuComponent implements OnInit {
   @Output()
   closeButtonClicked = new EventEmitter();
 
+  @Output()
+  widgetTypeClicked = new EventEmitter<WidgetType>();
+
+  @Output()
+  dragStart = new EventEmitter<WidgetType>();
+
   onCloseIconClicked() {
     this.closeButtonClicked.emit();
   }
@@ -23,4 +29,11 @@ export class WidgetMenuComponent implements OnInit {
   ngOnInit() {
   }
 
+  onDragstart(widgetType: WidgetType) {
+    this.dragStart.emit(widgetType);
+  }
+
+  onWidgetTypeClicked(widgetType: WidgetType) {
+    this.widgetTypeClicked.emit(widgetType);
+  }
 }
