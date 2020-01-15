@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { GridsterConfig, GridType, CompactType, DisplayGrid } from 'angular-gridster2';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { GridsterConfig, GridType, CompactType, DisplayGrid, GridsterComponent } from 'angular-gridster2';
 import { DashboardCard } from './models/dashboard-card.model';
 import { ChartWidgetComponent } from './widgets/chart-widget/chart-widget.component';
 import { WidgetType } from './models/widget-type.model';
@@ -33,7 +33,11 @@ export class DashboardComponent implements OnInit {
     }
   }];
 
+  @ViewChild('dashboardgrid', { static: false })
+  dashboardGrid: GridsterComponent;
+
   widgetMenuOpened = false;
+  widgetMenuOpenedBeforeDrag: boolean;
 
   constructor() {
   }
@@ -63,16 +67,46 @@ export class DashboardComponent implements OnInit {
       displayGrid: DisplayGrid.Always,
       pushItems: true,
       draggable: {
-          enabled: true
+        enabled: true,
+        start: () => {
+            this.widgetMenuOpenedBeforeDrag = this.widgetMenuOpened;
+            this.widgetMenuOpened = false;
+        },
+        stop: () => {
+            this.widgetMenuOpened = this.widgetMenuOpenedBeforeDrag;
+        }
       },
       resizable: {
           enabled: true
-      }
+      },
+      emptyCellDropCallback: this.onWidgetDrop.bind(this),
+      enableEmptyCellDrop: true
     };
   }
 
   changedOptions() {
     this.options.api.optionsChanged();
+  }
+
+  onWidgetDrop(event: MouseEvent, item: any) {
+    const { x, y } = this.getDashboardWidgetPosition(event);
+    const card = this.CreateCard(x, y, this.currentDraggableWidgetType);
+
+    this.addCard(card);
+  }
+
+  private getDashboardWidgetPosition($event: any) {
+    const rect = this.dashboardGrid.el.getBoundingClientRect();
+
+    const dashboardMargin = this.dashboardGrid.$options.margin;
+
+    const calculatedX = $event.clientX + this.dashboardGrid.el.scrollLeft - rect.left - dashboardMargin;
+    const calculatedY = $event.clientY + this.dashboardGrid.el.scrollTop - rect.top - dashboardMargin;
+
+    const x = this.dashboardGrid.pixelsToPositionX(calculatedX, Math.floor);
+    const y = this.dashboardGrid.pixelsToPositionY(calculatedY, Math.floor);
+
+    return { x, y };
   }
 
   addItem() {
@@ -133,6 +167,13 @@ export class DashboardComponent implements OnInit {
   }
 
   onDragstart(widgetType: WidgetType) {
+    this.options.maxItemCols = widgetType.placement.maxItemCols;
+    this.options.minItemCols = widgetType.placement.minItemCols;
+    this.options.maxItemRows = widgetType.placement.maxItemRows;
+    this.options.minItemRows = widgetType.placement.minItemRows;
+    this.options.defaultItemCols = widgetType.placement.cols;
+    this.options.defaultItemRows = widgetType.placement.rows;
+
     this.changedOptions();
 
     this.currentDraggableWidgetType = widgetType;
