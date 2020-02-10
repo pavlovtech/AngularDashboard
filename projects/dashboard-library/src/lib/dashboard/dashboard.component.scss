@@ -6,10 +6,6 @@
   flex: 1 1 auto;
 }
 
-:host ::ng-deep .gridster-preview {
-  display: none !important;
-}
-
 :host ::ng-deep gridster {
     height: calc(100vh - 65px);
     width: 100% !important;
@@ -31,6 +27,6 @@
 
 .widgets-panel {
     padding: 15px;
-    width: 320px;
+    width: 300px;
     border-right: blue($color: #000000);
 }

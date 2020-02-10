@@ -31,6 +31,26 @@ export class DashboardComponent implements OnInit {
         minItemCols: 2,
         maxItemCols: 3
     }
+  },
+  {
+    componentName: 'ChartWidgetComponent',
+    component: ChartWidgetComponent,
+    widgetSettings: {
+        widgetTitle: 'Area Chart'
+    },
+    description: 'Chart example for the demo.',
+    module: 'SOC',
+    thumbnailUrl: 'assets/images/widget-thumbnails/area.png',
+    placement: {
+        x: 0,
+        y: 0,
+        rows: 5,
+        cols: 2,
+        minItemRows: 2,
+        maxItemRows: 10,
+        minItemCols: 2,
+        maxItemCols: 3
+    }
   }];
 
   @ViewChild('dashboardgrid', { static: false })
