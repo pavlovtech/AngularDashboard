@@ -1,66 +1,6 @@
 # Dashboard
 
-# History
-
-## Setting up
-
-1. ng new Dashboard
-2. npm i angular-gridster2
-3. npm i bootstrap 
-4. include bootstrap to the angular.json
-
-    "styles": [
-      "node_modules/bootstrap/scss/bootstrap.scss",
-      /* ... */
-    ]
-
-5. ng add @angular/material
-6. npm i angular-highcharts highcharts
-
-## Adding Gridster
-1. Create a dashboard component
-
-    `ng g component dashboard`
-
-2. Add the gridster component
-
-    <gridster [options]="options">
-        <gridster-item [item]="item" *ngFor="let item of items">
-           <p>Test widget</p>
-        </gridster-item>
-    </gridster>
-
-# Toolbar
-
-Add a toolbar
-
-    `<mat-toolbar>
-        <button mat-mini-fab (click)="addItem()" class="add-button cols-2">
-            <mat-icon>add</mat-icon>
-        </button>
-    </mat-toolbar>`
-
-# Add simple chart widget
-
-1. Include HightChards module
-
-    import { ChartModule } from 'angular-highcharts';
-
-2. Generate ChartWidget component
-    
-    ng g component ChartWidget
-
-# Dashboard Card
-
-Add a dashboard card class
-
-    npm install uuid
-
-Use uuid to generate unique ID's
-
-# Add dynamic component directive
-
-    ng g directive DynamicComponent
+Dynamic responsive dashboard with widgets (work in progress).
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.12.
 
