@@ -1,4 +1,4 @@
-1. Add support for drag and drop
-2. Add support for multiple dashboards
-3. Add the manage dashboards pop up
-4. Fix dashboard library build
+1. Add support for multiple dashboards
+2. Add the manage dashboards pop up
+3. Fix dashboard library build
+4. Save dashboards to local storage
